@@ -8,11 +8,31 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "RentalManagementService.Controllers.LoginDto",
+        "Name": "req",
+        "Type": "RentalManagementService.Models.DTOs.LoginRequest",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "RentalManagementService.Models.DTOs.AuthResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RentalManagementService.Controllers.AuthController",
+    "Method": "Me",
+    "RelativePath": "api/Auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -24,28 +44,62 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "RentalManagementService.Controllers.RegisterDto",
+        "Name": "req",
+        "Type": "RentalManagementService.Models.DTOs.RegisterRequest",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "RentalManagementService.Models.DTOs.AuthResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RentalManagementService.Controllers.DashboardController",
+    "Method": "GetSummary",
+    "RelativePath": "api/Dashboard/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "RentalManagementService.Models.DashboardSummaryDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "RentalManagementService.Controllers.LeasesController",
-    "Method": "GetActive",
+    "Method": "GetAll",
     "RelativePath": "api/Leases",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
+    "Parameters": [],
+    "ReturnTypes": [
       {
-        "Name": "status",
-        "Type": "System.String",
-        "IsRequired": false
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RentalManagementService.Models.DTOs.LeaseDto, RentalManagementService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
     "ContainingType": "RentalManagementService.Controllers.LeasesController",
@@ -56,24 +110,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "l",
+        "Name": "lease",
         "Type": "RentalManagementService.Models.Lease",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentalManagementService.Controllers.LeasesController",
-    "Method": "Terminate",
-    "RelativePath": "api/Leases/{id}/terminate",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -119,7 +157,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RentalManagementService.Models.DTOs.PropertyListDto, RentalManagementService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "RentalManagementService.Controllers.PropertiesController",
@@ -130,24 +178,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "p",
+        "Name": "property",
         "Type": "RentalManagementService.Models.Property",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentalManagementService.Controllers.PropertiesController",
-    "Method": "GetById",
-    "RelativePath": "api/Properties/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -161,7 +193,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RentalManagementService.Models.DTOs.TenantDto, RentalManagementService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "RentalManagementService.Controllers.TenantsController",
@@ -172,12 +214,32 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "t",
+        "Name": "tenant",
         "Type": "RentalManagementService.Models.Tenant",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentalManagementService.Controllers.UnitsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Units",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RentalManagementService.Models.DTOs.UnitDto, RentalManagementService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "RentalManagementService.Controllers.UnitsController",

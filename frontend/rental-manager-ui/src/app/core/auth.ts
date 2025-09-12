@@ -1,54 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environments';
+import { isPlatformBrowser } from '@angular/common';
 
-interface LoginResponse {
-  token: string;
-  role: string;
-}
+import { Observable } from 'rxjs';
+import { StorageService } from './storage';
+import { environment } from '../../environments/environments';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private base = environment.apiBaseUrl;
-  private tokenKey = 'access_token';
+  constructor(
+    private http: HttpClient,
+    private storage: StorageService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  constructor(private http: HttpClient) {}
-
-  // 🔐 Login
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.base}/api/auth/login`, {
-      email,
-      password,
-    });
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${environment.apiBaseUrl}/Auth/login`, { email, password });
   }
 
-  // 🆕 Register
-  register(email: string, password: string, role: string) {
-    return this.http.post(`${this.base}/api/auth/register`, {
-      email,
-      password,
-      role,
-    });
+  // ✅ add this
+  register(email: string, password: string, role: string): Observable<any> {
+    // adjust the endpoint to match your backend (e.g. /api/Auth/register or /api/Users/register)
+    return this.http.post(`${environment.apiBaseUrl}/Auth/register`, { email, password, role });
   }
 
-  // 💾 Save token
-  saveToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
-  }
+  saveToken(token: string) { this.storage.setItem('access_token', token); }
+  logout() { this.storage.removeItem('access_token'); }
 
-  // 📤 Logout
-  logout() {
-    localStorage.removeItem(this.tokenKey);
-  }
-
-  // ✅ Is user logged in
   isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    if (!isPlatformBrowser(this.platformId)) return false;
+    return !!this.storage.getItem('access_token');
   }
 
-  // 📦 Get current token
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    if (!isPlatformBrowser(this.platformId)) return null;
+    return this.storage.getItem('access_token');
   }
 }

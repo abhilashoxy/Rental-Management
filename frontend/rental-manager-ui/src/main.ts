@@ -1,16 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { routes } from './app/routes';
-// Optional hydration if you use SSR:
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
-import { App } from './app/app';
+import 'zone.js'; // ✅ required for Angular’s default change detection
+import { routes } from './app/routes';
+import { AppComponent } from './app/app';
 import { jwtInterceptor } from './app/core/jwt-interceptor';
 
-bootstrapApplication(App, {
+bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([jwtInterceptor])),
-    provideClientHydration(), // safe to keep even without SSR
+    provideClientHydration(), // ok even without SSR
   ],
-}).catch(err => console.error(err));
+}).catch(console.error);

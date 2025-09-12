@@ -1,15 +1,18 @@
-import { CanMatchFn, Router } from '@angular/router';
+import { CanMatchFn, Router, UrlTree } from '@angular/router';
+import { inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
-export const authGuard: CanMatchFn = (route, segments) => {
-  const token = typeof localStorage !== 'undefined' ? localStorage.getItem('access_token') : null;
+export const authGuard: CanMatchFn = (route, segments): boolean | UrlTree => {
+  const router = inject(Router);
+  const platformId = inject(PLATFORM_ID);
 
-  // allow if token exists
+  // Only read localStorage in the browser
+  const token = isPlatformBrowser(platformId)
+    ? globalThis.localStorage?.getItem('access_token')
+    : null;
+
   if (token) return true;
 
-  // redirect to /login preserving target url
-  const router = new Router();
-  router.navigate(['/login'], {
-    queryParams: { returnUrl: '/' + segments.map(s => s.path).join('/') }
-  });
-  return false;
+  const returnUrl = '/' + segments.map(s => s.path).join('/');
+  return router.createUrlTree(['/login'], { queryParams: { returnUrl } });
 };

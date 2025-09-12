@@ -1,0 +1,343 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\dtos\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\dtos\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\leasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\leasescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\lease.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\tenantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\tenantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\unitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\unitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\tenant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\tenant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\maintenancerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\maintenancerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\dashboardsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\dashboardsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|c:\\users\\abhilash k\\onedrive\\documents\\practice\\rental-mgmt-starter\\backend\\rentalmanagementservice\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBADC454-F601-207A-2EDB-2FAF94A8E9A0}|RentalManagementService.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-12T19:19:39.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LeasesController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\LeasesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeasesController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\LeasesController.cs",
+              "RelativeToolTip": "Controllers\\LeasesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:03:27.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:58:51.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADEAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:09:58.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "Models\\AppUser.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\AppUser.cs",
+              "RelativeToolTip": "Models\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:00:02.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dtos.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\DTOs\\Dtos.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\Dtos.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\DTOs\\Dtos.cs",
+              "RelativeToolTip": "Models\\DTOs\\Dtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:11:10.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:03:03.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TenantsController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\TenantsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TenantsController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\TenantsController.cs",
+              "RelativeToolTip": "Controllers\\TenantsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:03:47.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwAUAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:51:04.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UnitsController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\UnitsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UnitsController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\UnitsController.cs",
+              "RelativeToolTip": "Controllers\\UnitsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:03:53.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Lease.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Lease.cs",
+              "RelativeDocumentMoniker": "Models\\Lease.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Lease.cs",
+              "RelativeToolTip": "Models\\Lease.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACOAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:00:05.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PropertiesController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\PropertiesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PropertiesController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\PropertiesController.cs",
+              "RelativeToolTip": "Controllers\\PropertiesController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:41:19.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Unit.cs",
+              "RelativeDocumentMoniker": "Models\\Unit.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Unit.cs",
+              "RelativeToolTip": "Models\\Unit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:02:51.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Tenant.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Tenant.cs",
+              "RelativeDocumentMoniker": "Models\\Tenant.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Tenant.cs",
+              "RelativeToolTip": "Models\\Tenant.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAADuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:59:58.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Property.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Property.cs",
+              "RelativeDocumentMoniker": "Models\\Property.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Property.cs",
+              "RelativeToolTip": "Models\\Property.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACSAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:49:30.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DashboardSummary.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\DashboardSummary.cs",
+              "RelativeDocumentMoniker": "Models\\DashboardSummary.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\DashboardSummary.cs",
+              "RelativeToolTip": "Models\\DashboardSummary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T18:57:34.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MaintenanceRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\MaintenanceRequest.cs",
+              "RelativeDocumentMoniker": "Models\\MaintenanceRequest.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\MaintenanceRequest.cs",
+              "RelativeToolTip": "Models\\MaintenanceRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAB7AQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:01:46.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAACxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:03:34.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Payment.cs",
+              "RelativeDocumentMoniker": "Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\Abhilash K\\OneDrive\\Documents\\Practice\\rental-mgmt-starter\\backend\\RentalManagementService\\Models\\Payment.cs",
+              "RelativeToolTip": "Models\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAArAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T19:02:26.799Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
