@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:8.0
+    container_name: rental_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: YourStrong!Pass
+      MYSQL_DATABASE: RentalDb
+    ports: ["3306:3306"]
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pYourStrong!Pass"]
+      interval: "10s"
+      timeout: "5s"
+      retries: 10
+
+  api:
+    build: ./backend/RentalManagementService
+    container_name: rental_api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: "Server=db;Port=3306;Database=RentalDb;User=root;Password=YourStrong!Pass;"
+      Jwt__Key: "please-change-this-super-secret-32-bytes-minimum"
+      Jwt__Issuer: "rental-mgmt"
+      Jwt__Audience: "rental-mgmt-clients"
+    ports: ["8080:8080"]
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

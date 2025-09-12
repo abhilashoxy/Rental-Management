@@ -1,0 +1,1 @@
+namespace RentalManagementService.Models { public class Unit { public int Id {get;set;} public int PropertyId {get;set;} public Property? Property {get;set;} public string UnitNumber {get;set;}=""; public int Bedrooms {get;set;} public int Bathrooms {get;set;} public decimal RentAmount {get;set;} public string Status {get;set;}="Vacant"; } }

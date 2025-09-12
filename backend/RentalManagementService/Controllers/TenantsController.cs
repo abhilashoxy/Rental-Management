@@ -1,0 +1,4 @@
+using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; using RentalManagementService.Data; using RentalManagementService.Models; 
+namespace RentalManagementService.Controllers { [ApiController][Route("api/[controller]")][Authorize] public class TenantsController: ControllerBase { private readonly ApplicationDbContext _db; public TenantsController(ApplicationDbContext db){_db=db;} 
+[HttpGet] public async Task<IActionResult> GetAll()=> Ok(await _db.Tenants.ToListAsync()); 
+[HttpPost][Authorize(Roles="Admin,Manager")] public async Task<IActionResult> Create([FromBody] Tenant t){ _db.Tenants.Add(t); await _db.SaveChangesAsync(); return Ok(t);} } }

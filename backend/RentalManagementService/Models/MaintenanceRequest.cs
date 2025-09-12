@@ -1,0 +1,1 @@
+namespace RentalManagementService.Models { public class MaintenanceRequest { public int Id {get;set;} public int UnitId {get;set;} public Unit? Unit {get;set;} public string Title {get;set;}=""; public string Description {get;set;}=""; public string Priority {get;set;}="Normal"; public string Status {get;set;}="Open"; public DateTime RequestedOn {get;set;}=DateTime.UtcNow; } }

@@ -1,0 +1,58 @@
+<div class="row g-3">
+  <!-- List -->
+  <div class="col-md-7">
+    <div class="card p-3 shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="mb-0">Tenants</h5>
+        <button class="btn btn-sm btn-light" (click)="load()">Refresh</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-sm align-middle">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of tenants" (click)="edit(t)" style="cursor: pointer">
+              <td>{{ t.firstName }} {{ t.lastName }}</td>
+              <td>{{ t.email }}</td>
+              <td>{{ t.phone }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="!tenants?.length" class="text-muted small">
+        No tenants yet.
+      </div>
+    </div>
+  </div>
+
+  <!-- Create -->
+  <div class="col-md-5">
+    <div class="card p-3 shadow-sm">
+      <h5 class="mb-3">Add Tenant</h5>
+      <form (ngSubmit)="create()" autocomplete="off" novalidate>
+        <div class="row g-2">
+          <div class="col-6">
+            <input class="form-control" [(ngModel)]="form.firstName" name="firstName" placeholder="First name" required />
+          </div>
+          <div class="col-6">
+            <input class="form-control" [(ngModel)]="form.lastName" name="lastName" placeholder="Last name" />
+          </div>
+          <div class="col-12">
+            <input type="email" class="form-control" [(ngModel)]="form.email" name="email" placeholder="Email" />
+          </div>
+          <div class="col-12">
+            <input class="form-control" [(ngModel)]="form.phone" name="phone" placeholder="Phone" />
+          </div>
+        </div>
+        <button class="btn btn-primary w-100 mt-3">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

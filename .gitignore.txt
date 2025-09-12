@@ -1,0 +1,45 @@
+# ------------------------
+# OS junk
+.DS_Store
+Thumbs.db
+
+# ------------------------
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+# ------------------------
+# .NET build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# Entity Framework
+Migrations/
+
+# ------------------------
+# Angular / Node
+node_modules/
+dist/
+.angular/cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ------------------------
+# Environment / secrets
+.env
+*.secret.*
+*.local
+
+# ------------------------
+# Misc
+*.vsidx
+*.swp
+*.tmp

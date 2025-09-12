@@ -1,0 +1,1 @@
+namespace RentalManagementService.Models { public class Payment { public int Id {get;set;} public int LeaseId {get;set;} public Lease? Lease {get;set;} public DateTime PaymentDate {get;set;} public decimal Amount {get;set;} public string Method {get;set;}="Cash"; public string? Notes {get;set;} } }

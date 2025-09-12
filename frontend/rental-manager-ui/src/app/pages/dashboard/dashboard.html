@@ -1,0 +1,26 @@
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <div class="text-muted">Occupancy</div>
+      <div class="display-6">{{ s?.occupancyPercent ?? '--' }}%</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <div class="text-muted">Due This Month</div>
+      <div class="display-6">{{ s?.dueThisMonth ?? '--' }}</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3 shadow-sm">
+      <div class="text-muted">Overdue Leases</div>
+      <div class="display-6">{{ s?.overdueLeases ?? '--' }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4 d-flex gap-2">
+  <a class="btn btn-outline-primary" routerLink="/properties">Properties</a>
+  <a class="btn btn-outline-primary" routerLink="/units">Units</a>
+  <a class="btn btn-outline-primary" routerLink="/tenants">Tenants</a>
+</div>

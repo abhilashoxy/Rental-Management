@@ -1,0 +1,4 @@
+using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; using RentalManagementService.Data; using RentalManagementService.Models; 
+namespace RentalManagementService.Controllers { [ApiController][Route("api/[controller]")][Authorize] public class PaymentsController: ControllerBase { private readonly ApplicationDbContext _db; public PaymentsController(ApplicationDbContext db){_db=db;} 
+[HttpGet] public async Task<IActionResult> ByLease([FromQuery] int leaseId){ var list=await _db.Payments.Where(p=>p.LeaseId==leaseId).ToListAsync(); return Ok(list);} 
+[HttpPost][Authorize(Roles="Admin,Manager")] public async Task<IActionResult> Create([FromBody] Payment p){ _db.Payments.Add(p); await _db.SaveChangesAsync(); return Ok(p);} } }
