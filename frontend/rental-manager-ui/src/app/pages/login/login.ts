@@ -26,6 +26,7 @@ export class LoginComponent {
     this.error = '';
     this.auth.login(this.email, this.password).subscribe({
       next: (res) => {
+         this.auth.rehydrate(); 
         if (res?.token) {
       this.auth.logout(); // clear old token
       this.auth['storage'].setItem('access_token', res.token);
@@ -47,5 +48,9 @@ export class LoginComponent {
   goSignup(e: Event) {
   e.preventDefault();
   this.router.navigateByUrl('/signup');
+}
+goForgotPassword(e: Event) {
+  e.preventDefault();
+  this.router.navigateByUrl('/forgot-password');
 }
 }

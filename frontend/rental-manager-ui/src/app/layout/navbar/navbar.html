@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top px-3">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-semibold" routerLink="/">RentalMgmt</a>
+
+    <!-- Mobile menu toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible area -->
+    <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
+      <!-- LEFT: app links when authenticated -->
+      @if (auth.isAuthenticated()) {
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/properties" routerLinkActive="active">Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/units" routerLinkActive="active">Units</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tenants" routerLinkActive="active">Tenants</a>
+          </li>
+        </ul>
+
+        <!-- RIGHT: profile dropdown -->
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="profileMenu"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ auth._user$.value?.name || 'User' }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenu">
+              <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><button class="dropdown-item" (click)="logout()">Sign out</button></li>
+            </ul>
+          </li>
+        </ul>
+      } @else {
+        <!-- NOT authenticated: show buttons unless on auth routes -->
+        @if (auth.isAuthenticated() == false) {
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="btn btn-outline-primary me-2" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" routerLink="/signup">Sign Up</a>
+            </li>
+          </ul>
+        }
+      }
+    </div>
+  </div>
+</nav>

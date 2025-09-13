@@ -7,5 +7,12 @@
     public record RegisterRequest(string Email, string Password, string Role);  // Role: Admin|Manager|Viewer
     public record LoginRequest(string Email, string Password);
     public record AuthResponse(string Token, string Email, string Role);
+    public record ForgotPasswordRequest(string Email);
+    public record ForgotPasswordResponse(string Message, string? DevToken); // DevToken returned only in dev
+    public record ResetPasswordRequest(string Token, string NewPassword);
+    public record MeDto(int Id, string Email, string? Name, string Role);
+    public record UpdateProfileDto(string? Name);
+    public record ChangePasswordDto(string CurrentPassword, string NewPassword);
+    public record UpdateProfileResult(MeDto User, string? NewJwt); // NewJwt if claims changed
 }
 

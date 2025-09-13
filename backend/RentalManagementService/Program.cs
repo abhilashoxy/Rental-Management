@@ -1,7 +1,9 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RentalManagementService.Data;
+using RentalManagementService.Interfaces;
+using RentalManagementService.Services;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -52,6 +54,16 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Email sender: choose ONE and comment the other
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();     // ✅ Ethereal via SMTP
+}
+else
+{
+    builder.Services.AddScoped<IEmailSender, SendGridEmailSender>(); // or keep SMTP for prod too
+}
+// builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
 var app = builder.Build();
 app.UseCors("AllowFrontend");
 app.UseSwagger(); app.UseSwaggerUI();

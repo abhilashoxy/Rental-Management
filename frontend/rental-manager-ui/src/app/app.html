@@ -1,72 +1,11 @@
-<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-semibold" routerLink="/" (click)="collapseNav()">RentalMgmt</a>
-
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mainNav"
-      aria-controls="mainNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="collapseNav()"
-            >Dashboard</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/properties"
-            routerLinkActive="active"
-            (click)="collapseNav()"
-            >Properties</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/units"
-            routerLinkActive="active"
-            (click)="collapseNav()"
-            >Units</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/tenants"
-            routerLinkActive="active"
-            (click)="collapseNav()"
-            >Tenants</a
-          >
-        </li>
-
-        <li class="nav-item ms-lg-3" *ngIf="isBrowser && !auth.isAuthenticated(); else loggedIn">
-  <a class="btn btn-outline-primary btn-sm" routerLink="/login" (click)="collapseNav()">Login</a>
-</li>
-<ng-template #loggedIn>
-  <li class="nav-item ms-lg-3" *ngIf="isBrowser">
-    <button class="btn btn-outline-danger btn-sm" (click)="logout(); collapseNav()">Logout</button>
-  </li>
-</ng-template>
-      </ul>
-    </div>
-  </div>
-</nav>
+<app-navbar></app-navbar>
 
 <main class="container py-4">
   <router-outlet></router-outlet>
 </main>
+
+<footer class="bg-light text-center text-lg-start mt-auto py-3 border-top">
+  <div class="text-center p-3">
+    &copy; {{ currentYear }} Abhilash K
+  </div>
+</footer>

@@ -6,6 +6,7 @@ import 'zone.js'; // ✅ required for Angular’s default change detection
 import { routes } from './app/routes';
 import { AppComponent } from './app/app';
 import { jwtInterceptor } from './app/core/jwt-interceptor';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 bootstrapApplication(AppComponent, {
   providers: [

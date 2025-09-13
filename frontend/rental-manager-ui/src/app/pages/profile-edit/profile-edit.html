@@ -1,0 +1,29 @@
+<!-- src/app/pages/profile-edit/profile-edit.html -->
+<div class="container mt-5">
+  <div class="card shadow-sm p-4">
+    <h3 class="mb-3">Edit Profile</h3>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input class="form-control" formControlName="name" />
+      </div>
+
+      <button class="btn btn-primary" [disabled]="form.invalid || saving">
+        {{ saving ? 'Saving...' : 'Save changes' }}
+      </button>
+      <a class="btn btn-link ms-2" (click)="back()">Cancel</a>
+    </form>
+
+    <hr class="my-4">
+
+   
+
+    @if (error) {
+      <div class="alert alert-danger mt-3">{{ error }}</div>
+    }
+    @if (message) {
+      <div class="alert alert-success mt-3">{{ message }}</div>
+    }
+  </div>
+</div>

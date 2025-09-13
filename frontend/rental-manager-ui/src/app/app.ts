@@ -1,21 +1,24 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, inject, Inject, PLATFORM_ID, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './core/auth';
+import { NavbarComponent } from './layout/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+imports: [CommonModule, RouterOutlet,NavbarComponent],
 
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class AppComponent {
   isBrowser = false;
-  constructor(public auth: AuthService, @Inject(PLATFORM_ID) platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  currentYear = new Date().getFullYear();
+ private auth = inject(AuthService);
+
+  constructor() {
+  this.auth.rehydrate();
   }
-  logout() { this.auth.logout(); }
-  collapseNav() { /* (keep your collapse code here if you added it) */ }
+
 }
