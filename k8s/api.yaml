@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rental-api-secrets
+  namespace: rental
+type: Opaque
+stringData:
+  ConnectionStrings__Default: "server=mysql;port=3306;database=RentalDB;user=root;password=placeholder"
+  Jwt__Key: "placeholder"
+  Jwt__Issuer: "rental-mgmt"
+  Jwt__Audience: "rental-mgmt-clients"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rental-api
+  namespace: rental
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: rental-api }
+  template:
+    metadata:
+      labels: { app: rental-api }
+    spec:
+      containers:
+        - name: rental-api
+          # image is set by the workflow (kubectl set image)
+          image: docker.io/your-user/rental-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:8080"
+          envFrom:
+            - secretRef: { name: rental-api-secrets }
+          readinessProbe:
+            httpGet:
+              path: /swagger/index.html
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /swagger/index.html
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rental-api
+  namespace: rental
+spec:
+  selector: { app: rental-api }
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP

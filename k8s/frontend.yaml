@@ -1,48 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rental-web
+  name: rental-frontend
+  namespace: rental
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: rental-web
+    matchLabels: { app: rental-frontend }
   template:
     metadata:
-      labels:
-        app: rental-web
+      labels: { app: rental-frontend }
     spec:
       containers:
-        - name: web
-          image: your-dockerhub-username/rental-web:latest
-          imagePullPolicy: IfNotPresent
+        - name: rental-frontend
+          # image is set by the workflow (kubectl set image)
+          image: docker.io/your-user/rental-frontend:latest
           ports:
             - containerPort: 80
-          # If you need to vary backend host without rebuilding, we can ENV-substitute nginx; for now proxy uses Service DNS.
           readinessProbe:
-            httpGet:
-              path: /
-              port: 80
+            httpGet: { path: /, port: 80 }
             initialDelaySeconds: 5
             periodSeconds: 10
-            timeoutSeconds: 2
           livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 15
+            httpGet: { path: /, port: 80 }
+            initialDelaySeconds: 10
             periodSeconds: 20
-            timeoutSeconds: 2
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: rental-web
+  name: rental-frontend
+  namespace: rental
 spec:
-  selector:
-    app: rental-web
+  selector: { app: rental-frontend }
   ports:
-    - name: http
-      port: 80
+    - port: 80
       targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
