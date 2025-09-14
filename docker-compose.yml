@@ -1,33 +1,50 @@
-version: "3.9"
 services:
-  db:
+  mysql:
     image: mysql:8.0
-    container_name: rental_mysql
+    container_name: rental-mysql
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: YourStrong!Pass
-      MYSQL_DATABASE: RentalDb
-    ports: ["3306:3306"]
-    volumes:
-      - db_data:/var/lib/mysql
+      MYSQL_ROOT_PASSWORD: "Abhilash$1992"
+      MYSQL_DATABASE: "RentalDB"
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    ports:
+      - "3307:3306"              # host:container (use 3307 on host)
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-pYourStrong!Pass"]
-      interval: "10s"
-      timeout: "5s"
-      retries: 10
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -proot || mysqladmin ping -h 127.0.0.1 -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - mysql_data:/var/lib/mysql
 
-  api:
-    build: ./backend/RentalManagementService
-    container_name: rental_api
+  rental-api:
+    image: abhilashbkreddy/rental-api:latest
+    container_name: rental-api
+    depends_on:
+      mysql:
+        condition: service_healthy
     environment:
-      ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__Default: "Server=db;Port=3306;Database=RentalDb;User=root;Password=YourStrong!Pass;"
-      Jwt__Key: "please-change-this-super-secret-32-bytes-minimum"
+      ConnectionStrings__Default: "server=mysql;port=3306;database=RentalDB;user=root;password=Abhilash$1992;SslMode=None"
+      Jwt__Key: "9qEJrFBP3m5tYhZ0x2W8a6Ud7LBc4NfQ7vR1aHkP3xZ8yT2uC6wM0bD4sF9gK1Qe"     # >=16 chars
       Jwt__Issuer: "rental-mgmt"
       Jwt__Audience: "rental-mgmt-clients"
-    ports: ["8080:8080"]
+      ASPNETCORE_URLS: "http://0.0.0.0:5000"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      # CORS not needed for the SPA because we proxy /api via nginx
+    ports:
+      - "8080:5000"                        # handy for Swagger: http://localhost:8080/swagger
+
+  rental-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: rental-frontend:latest
+    container_name: rental-frontend
     depends_on:
-      db:
-        condition: service_healthy
+      - rental-api
+    ports:
+      - "4200:80"                          # app at http://localhost:4200
+    restart: unless-stopped
 
 volumes:
-  db_data:
+  mysql_data:

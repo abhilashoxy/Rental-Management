@@ -1,0 +1,13 @@
+# VS / OS
+.vs/
+*.user
+*.suo
+*.vsidx
+*.log
+
+# build output
+**/bin/
+**/obj/
+
+# node (if any)
+node_modules/

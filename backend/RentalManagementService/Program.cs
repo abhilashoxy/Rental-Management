@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RentalManagementService.Data;
@@ -8,34 +9,57 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// 1) Configuration (includes environment variables)
+builder.Configuration.AddEnvironmentVariables();
+
+// 2) MVC + JSON options (ignore cycles)
 builder.Services.AddControllers().AddJsonOptions(o =>
 {
     o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     o.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-    // optional: if you need deeper graphs
-    // o.JsonSerializerOptions.MaxDepth = 64;
+    // o.JsonSerializerOptions.MaxDepth = 64; // if you need deeper graphs
 });
-builder.Services.AddDbContext<ApplicationDbContext>(opt => {
+
+// 3) Database (MySQL) — reads ConnectionStrings:Default or env var ConnectionStrings__Default
+builder.Services.AddDbContext<ApplicationDbContext>(opt =>
+{
     var cs = builder.Configuration.GetConnectionString("Default")
-      ?? Environment.GetEnvironmentVariable("ConnectionStrings__Default")
-      ?? throw new Exception("Missing connection string");
+        ?? builder.Configuration["ConnectionStrings:Default"]
+        ?? Environment.GetEnvironmentVariable("ConnectionStrings__Default")
+        ?? throw new InvalidOperationException("Missing connection string: set ConnectionStrings:Default / ConnectionStrings__Default.");
+
     opt.UseMySql(cs, ServerVersion.AutoDetect(cs));
 });
-// Add CORS
+
+// 4) CORS — allow Angular dev or your Nginx origin
+var frontendOrigin = builder.Configuration["FRONTEND_ORIGIN"] ?? "http://localhost:4200";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy => policy
-            .WithOrigins("http://localhost:4200") // Angular dev server
+    options.AddPolicy("AllowFrontend", policy =>
+        policy.WithOrigins(
+                frontendOrigin.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+            )
             .AllowAnyHeader()
             .AllowAnyMethod()
     );
 });
-// JWT auth (validate tokens we issue in AuthController)
-var jwtSection = builder.Configuration.GetSection("Jwt");
-var keyBytes = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+// 5) JWT auth
+var jwtKey = builder.Configuration["Jwt:Key"] ?? builder.Configuration["JWT_KEY"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? builder.Configuration["JWT_ISSUER"] ?? "rental-mgmt";
+var jwtAud = builder.Configuration["Jwt:Audience"] ?? builder.Configuration["JWT_AUDIENCE"] ?? "rental-mgmt-clients";
+
+// Fail fast with a clear message if key is missing/too short
+if (string.IsNullOrWhiteSpace(jwtKey) || Encoding.UTF8.GetByteCount(jwtKey) < 32)
+{
+    throw new InvalidOperationException("JWT signing key missing/weak. Provide Jwt:Key (or env JWT_KEY) with at least 16 chars.");
+}
+
+var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.RequireHttpsMetadata = false; // dev only
@@ -44,34 +68,56 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtSection["Issuer"],
-            ValidAudience = jwtSection["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAud,
+            IssuerSigningKey = signingKey,
             ClockSkew = TimeSpan.FromMinutes(1)
         };
     });
+
 builder.Services.AddAuthorization();
 
+// 6) Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// Email sender: choose ONE and comment the other
+
+// 7) Email sender — Ethereal SMTP in dev, SendGrid in prod (adjust as you like)
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();     // ✅ Ethereal via SMTP
+    builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();     // Ethereal via SMTP
 }
 else
 {
-    builder.Services.AddScoped<IEmailSender, SendGridEmailSender>(); // or keep SMTP for prod too
+    builder.Services.AddScoped<IEmailSender, SendGridEmailSender>(); // or use SMTP in prod too
 }
-// builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
+
 var app = builder.Build();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost,
+    // If you want to lock to Docker network IP of nginx, add KnownProxies/KnownNetworks
+    // KnownProxies = { IPAddress.Parse("172.19.0.2") }
+});
+
+// 8) Middleware
 app.UseCors("AllowFrontend");
-app.UseSwagger(); app.UseSwaggerUI();
-app.UseAuthentication(); app.UseAuthorization();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
-using (var scope = app.Services.CreateScope()) {
-  var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-  db.Database.EnsureCreated();
-  DbSeeder.Seed(db);
+
+// 9) Health endpoint (for Docker/K8s checks)
+app.MapGet("/health", () => Results.Ok("ok"));
+
+// 10) DB migrate & seed
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await db.Database.MigrateAsync(); // better than EnsureCreated for relational DBs
+    DbSeeder.Seed(db);
 }
+
 app.Run();

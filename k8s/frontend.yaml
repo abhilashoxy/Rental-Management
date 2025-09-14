@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rental-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rental-web
+  template:
+    metadata:
+      labels:
+        app: rental-web
+    spec:
+      containers:
+        - name: web
+          image: your-dockerhub-username/rental-web:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          # If you need to vary backend host without rebuilding, we can ENV-substitute nginx; for now proxy uses Service DNS.
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rental-web
+spec:
+  selector:
+    app: rental-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
