@@ -7,28 +7,24 @@ on:
     branches: [ "main" ]
 
 env:
-  # Default registry = GHCR. To use Docker Hub, set: REGISTRY=docker.io and login below.
   REGISTRY: ghcr.io
-  # Image names (change if you like)
-  BACKEND_IMAGE: rental-api
-  FRONTEND_IMAGE: rental-frontend
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write   # needed if you push to GHCR
+      packages: write  # needed to push to GHCR
     strategy:
       fail-fast: false
       matrix:
         include:
           - name: backend
-            image: ${{ env.BACKEND_IMAGE }}
+            image: rental-api
             context: ./backend
             file: ./backend/Dockerfile
           - name: frontend
-            image: ${{ env.FRONTEND_IMAGE }}
+            image: rental-frontend
             context: ./frontend
             file: ./frontend/Dockerfile
 
@@ -36,28 +32,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up QEMU (multi-arch, optional)
+      - name: Set up QEMU (optional)
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 👉 If pushing to GHCR (recommended): login using GITHUB_TOKEN
+      # Login to GHCR (pushes on main)
       - name: Login to GHCR
+        if: ${{ env.REGISTRY == 'ghcr.io' }}
         uses: docker/login-action@v3
-        if: env.REGISTRY == 'ghcr.io'
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # 👉 If pushing to Docker Hub instead, comment the GHCR login above,
-      #     create secrets DOCKERHUB_USERNAME and DOCKERHUB_TOKEN, and use:
+      # If you want Docker Hub instead, comment the GHCR login above and use:
       # - name: Login to Docker Hub
       #   uses: docker/login-action@v3
       #   with:
       #     username: ${{ secrets.DOCKERHUB_USERNAME }}
       #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # And also set REGISTRY: docker.io at the top.
 
       - name: Extract Docker metadata (tags/labels)
         id: meta
@@ -70,12 +66,12 @@ jobs:
             type=raw,value=${{ github.run_number }}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
-      - name: Build (and optionally push) ${{ matrix.name }}
+      - name: Build (and push on main) ${{ matrix.name }}
         uses: docker/build-push-action@v6
         with:
           context: ${{ matrix.context }}
           file: ${{ matrix.file }}
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  # push only on main
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
