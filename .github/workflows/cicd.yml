@@ -111,8 +111,8 @@ jobs:
 
       - name: Wait for rollout
         run: |
-          kubectl -n rental rollout status deploy/rental-api --timeout=300s
-          kubectl -n rental rollout status deploy/rental-frontend --timeout=300s
+          kubectl -n rental rollout status deployment/rental-api --timeout=300s
+          kubectl -n rental rollout status deployment/rental-frontend --timeout=300s
 
       - name: Show service endpoints
         run: |
