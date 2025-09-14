@@ -48,7 +48,7 @@ jobs:
       - name: Build & push Frontend
         uses: docker/build-push-action@v6
         with:
-          context: ./frontend/rental-manager-ui
+          context: .
           file: ./frontend/rental-manager-ui/Dockerfile
           push: true
           tags: |
