@@ -110,7 +110,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 // 9) Health endpoint (for Docker/K8s checks)
-app.MapGet("/health", () => Results.Ok("ok"));
+app.MapGet("/health", () => Results.Ok("ok")).AllowAnonymous() ;
 
 // 10) DB migrate & seed
 using (var scope = app.Services.CreateScope())
