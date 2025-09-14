@@ -119,3 +119,4 @@ C:\Users\Abhilash K\OneDrive\Documents\Practice\rental-mgmt-starter\backend\Rent
 C:\Users\Abhilash K\OneDrive\Documents\Practice\rental-mgmt-starter\backend\RentalManagementService\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Abhilash K\OneDrive\Documents\Practice\rental-mgmt-starter\backend\RentalManagementService\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Abhilash K\OneDrive\Documents\Practice\rental-mgmt-starter\backend\RentalManagementService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Abhilash K\OneDrive\Documents\Practice\rental-mgmt-starter\backend\RentalManagementService\obj\Debug\net8.0\RentalManagementService.sourcelink.json

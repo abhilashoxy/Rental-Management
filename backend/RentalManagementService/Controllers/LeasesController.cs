@@ -1,5 +1,38 @@
-using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc; using Microsoft.EntityFrameworkCore; using RentalManagementService.Data; using RentalManagementService.Models; 
-namespace RentalManagementService.Controllers { [ApiController][Route("api/[controller]")][Authorize] public class LeasesController: ControllerBase { private readonly ApplicationDbContext _db; public LeasesController(ApplicationDbContext db){_db=db;} 
-[HttpGet] public async Task<IActionResult> GetActive([FromQuery] string? status="Active"){ var q=_db.Leases.Include(l=>l.Unit).Include(l=>l.Tenant).AsQueryable(); if(!string.IsNullOrWhiteSpace(status)) q=q.Where(l=>l.Status==status); return Ok(await q.ToListAsync()); } 
-[HttpPost][Authorize(Roles="Admin,Manager")] public async Task<IActionResult> Create([FromBody] Lease l){ bool occupied=await _db.Leases.AnyAsync(x=>x.UnitId==l.UnitId && x.Status=="Active"); if(occupied) return BadRequest("Unit already has an active lease"); _db.Leases.Add(l); var unit=await _db.Units.FindAsync(l.UnitId); if(unit is not null) unit.Status="Occupied"; await _db.SaveChangesAsync(); return Ok(l);} 
-[HttpPatch("{id:int}/terminate")][Authorize(Roles="Admin,Manager")] public async Task<IActionResult> Terminate(int id){ var lease=await _db.Leases.FindAsync(id); if(lease is null) return NotFound(); lease.Status="Terminated"; var unit=await _db.Units.FindAsync(lease.UnitId); if(unit is not null) unit.Status="Vacant"; await _db.SaveChangesAsync(); return Ok(lease);} } }
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RentalManagementService.Data;
+
+using RentalManagementService.Models;
+using RentalManagementService.Models.DTOs;
+
+namespace RentalManagementService.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize]
+    public class LeasesController : ControllerBase
+    {
+        private readonly ApplicationDbContext _db;
+        public LeasesController(ApplicationDbContext db) => _db = db;
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<LeaseDto>>> GetAll()
+        {
+            var data = await _db.Leases
+                .AsNoTracking()
+                .Select(l => new LeaseDto(l.Id, l.UnitId, l.TenantId, l.StartDate, l.EndDate, l.MonthlyRent, l.Deposit, l.Status))
+                .ToListAsync();
+            return Ok(data);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,Manager")]
+        public async Task<IActionResult> Create(Lease lease)
+        {
+            _db.Leases.Add(lease);
+            await _db.SaveChangesAsync();
+            return Ok(lease);
+        }
+    }
+}

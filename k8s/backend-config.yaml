@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rental-api-config
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+  Jwt__Issuer: "rental-mgmt"
+  Jwt__Audience: "rental-mgmt-clients"
+  # Email config for dev if needed (Ethereal etc.)
+  Email__From: "no-reply@dev.local"
+  Email__Host: "smtp.ethereal.email"
+  Email__Port: "587"
+  Email__EnableSsl: "false"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rental-api-secrets
+type: Opaque
+stringData:
+  # example local connection string; replace for your env
+  ConnectionStrings__Default: "Server=<your-sql-host>;Database=RentalDb;User ID=<u>;Password=<p>;TrustServerCertificate=True;MultipleActiveResultSets=True;"
+  Jwt__Key: "replace-with-a-long-random-256-bit-key"
+  Email__User: "your-ethereal-user"
+  Email__Pass: "your-ethereal-pass"

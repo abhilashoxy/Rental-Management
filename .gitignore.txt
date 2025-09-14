@@ -1,9 +1,9 @@
-# ------------------------
+# ========================
 # OS junk
 .DS_Store
 Thumbs.db
 
-# ------------------------
+# ========================
 # IDE / Editor
 .vscode/
 .idea/
@@ -12,34 +12,64 @@ Thumbs.db
 *.userosscache
 *.sln.docstates
 .vs/
+*.code-workspace
 
-# ------------------------
-# .NET build
+# ========================
+# .NET build artifacts
 [Bb]in/
 [Oo]bj/
 [Ll]og/
 *.log
+project.lock.json
+project.fragment.lock.json
+artifacts/
 
 # Entity Framework
 Migrations/
 
-# ------------------------
+# User secrets
+secrets.json
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Publish output
+out/
+publish/
+*.dbmdl
+
+# ========================
 # Angular / Node
 node_modules/
 dist/
 .angular/cache/
+.angular/server/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
 
-# ------------------------
+# Angular environments
+/src/environments/*.ts
+!src/environments/environments.example.ts
+
+# ========================
 # Environment / secrets
 .env
 *.secret.*
 *.local
+*.development
+*.production
 
-# ------------------------
+# ========================
 # Misc
 *.vsidx
 *.swp
 *.tmp
+*.bak
+*.pid
+*.seed
+*.coveragereport/
+coverage/
+`
